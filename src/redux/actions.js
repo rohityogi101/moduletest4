@@ -1,18 +1,4 @@
 import axios from "axios";
-export const fetchWordDetails = (word) => {
-  return (dispatch) => {
-    dispatch({ type: "FETCH_WORD_DETAILS_START" });
-
-    axios
-      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-      .then((response) => {
-        dispatch({ type: "FETCH_WORD_DETAILS_SUCCESS", payload: response.data });
-      })
-      .catch((error) => {
-        dispatch({ type: "FETCH_WORD_DETAILS_ERROR", payload: error.message });
-      });
-  };
-};
 
 export const fetchWordDetailsSuccess = (wordDetails) => {
   return {
@@ -35,7 +21,17 @@ export const addWordToHistory = (word) => {
   };
 };
 
-// export const fetchWordDetails = (word) => {
-//   // Implement API call using Axios or fetch here
-//   // Dispatch actions for success and error cases
-// };
+export const fetchWordDetails = (word) => {
+  return (dispatch) => {
+    dispatch({ type: "FETCH_WORD_DETAILS_START" });
+
+    axios
+      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      .then((response) => {
+        dispatch({ type: "FETCH_WORD_DETAILS_SUCCESS", payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: "FETCH_WORD_DETAILS_ERROR", payload: error.message });
+      });
+  };
+};

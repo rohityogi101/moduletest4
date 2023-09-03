@@ -33,6 +33,7 @@ const Home = () => {
       </div>
       {isLoading && <Loader />}
       {wordDetails && <WordDetails />}
+      <h3 className="text-center mt-5">{error && error}</h3>
     </>
   );
 };
